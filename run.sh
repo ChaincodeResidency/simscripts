@@ -1,7 +1,5 @@
 #! /bin/bash
 
-CPUPROFILE = "~/data/profiles/b.prof"
-
 pushd /scratch/neha/bitcoindir &&
      if [ "$(pwd)" == '/scratch/neha/bitcoindir' ];
      then
@@ -9,4 +7,6 @@ pushd /scratch/neha/bitcoindir &&
      fi
 popd
 
-#LD_PRELOAD="/usr/lib/libprofiler.so" CPUPROFILE=$(CPUPROFILE) src/bitcoind -simulation -datadir=/scratch/neha/bitcoindir -simdatadir=/scratch/simdata -start=20160630 -end=20160701 -loadmempool=0 -disablewallet -debug=bench
+LD_PRELOAD="/usr/lib/libprofiler.so" 
+CPUPROFILE="~/data/profiles/b.prof" 
+src/bitcoind -simulation -datadir=/scratch/neha/bitcoindir -simdatadir=/scratch/simdata -start=20160630 -end=20160701 -loadmempool=0 -disablewallet -debug=bench
